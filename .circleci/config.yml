@@ -206,6 +206,9 @@ jobs:
           cluster: << parameters.cluster >>
           source-env: << parameters.source-env >>
       - run:
+          name: deploy SLOs
+          command: bash -c "kubectl apply -n monitoring -f observe/slo --recursive"
+      - run:
           name: install requirements
           command: pip install -r requirements.txt
       - run:
