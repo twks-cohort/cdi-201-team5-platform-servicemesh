@@ -23,3 +23,15 @@ spec:
         events:
           errorQuery: sum(rate(istio_requests_total{response_code=~"(5..|429)"}[{{.window}}]))
           totalQuery: sum(rate(istio_requests_total[{{.window}}]))
+      alerting:
+        name: IstioDaemonAvailabilityAlert
+        labels:
+          category: "availability"
+        annotations:
+          summary: "Low availability detected"
+        pageAlert:
+          labels:
+            severity: critical
+        ticketAlert:
+          labels:
+            severity: warning
