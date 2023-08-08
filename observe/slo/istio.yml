@@ -42,8 +42,8 @@ spec:
         category: convergence
       sli:
         events:
-          successQuery: sum(rate(pilot_proxy_convergence_time_bucket{le="0.5"}[{{.window}}]))
-          totalQuery: sum(rate(pilot_proxy_convergence_time_count[{{.window}}]))
+          errorQuery: sum(rate(istio_agent_pilot_proxy_convergence_time_count[{{.window}}])) - sum(rate(istio_agent_pilot_proxy_convergence_time_bucket{le="0.1"}[{{.window}}]))))
+          totalQuery: sum(rate(istio_agent_pilot_proxy_convergence_time_count[{{.window}}]))
       alerting:
         name: IstioConfigConvergenceAlert
         labels:
