@@ -35,3 +35,24 @@ spec:
         ticketAlert:
           labels:
             severity: warning
+    - name: "config-change-convergence"
+      objective: 99.995
+      description: "Warn if Istio config changes pushed to a proxy sidecar converge in less than 0.5 seconds more than 0.005% of the time."
+      labels:
+        category: convergence
+      sli:
+        events:
+          successQuery: sum(rate(pilot_proxy_convergence_time_bucket{le="0.5"}[{{.window}}]))
+          totalQuery: sum(rate(pilot_proxy_convergence_time_count[{{.window}}]))
+      alerting:
+        name: IstioConfigConvergenceAlert
+        labels:
+          category: "availability"
+        annotations:
+          summary: "Low availability detected"
+        pageAlert:
+          labels:
+            severity: critical
+        ticketAlert:
+          labels:
+            severity: warning
