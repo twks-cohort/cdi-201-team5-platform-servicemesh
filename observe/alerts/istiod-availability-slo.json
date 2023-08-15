@@ -1,7 +1,24 @@
 {
-  "orgId": 1,
   "title": "Istiod Availability SLO",
+  "ruleGroup": "PETeam",
+  "orgId": 1,
   "condition": "C",
+  "labels": {
+    "cluster": "prod-us-east-2",
+    "env": "prod",
+    "team": "PETeam"
+  },
+  "uid": "istiod-availability-slo-alert",
+  "folderUID": "pe-folder",
+  "noDataState": "NoData",
+  "execErrState": "Error",
+  "for": "5m",
+  "dashboardUid": "slo-detail",
+  "panelId": 66,
+  "annotations": {
+    "__dashboardUid__": "slo-detail",
+    "__panelId__": "66"
+  },
   "data": [
     {
       "refId": "A",
@@ -107,20 +124,5 @@
         "type": "threshold"
       }
     }
-  ],
-  "intervalSeconds": 60,
-  "version": 1,
-  "uid": "istiod-availability-slo-alert",
-  "namespace_uid": "pe-folder",
-  "namespace_id": 12,
-  "rule_group": "PETeam",
-  "no_data_state": "NoData",
-  "exec_err_state": "Error",
-  "is_paused": false,
-  "dashboardUid": "slo-detail",
-  "panelId": 66,
-  "annotations": {
-    "__dashboardUid__": "slo-detail",
-    "__panelId__": "66"
-  }
+  ]
 }
