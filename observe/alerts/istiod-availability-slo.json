@@ -1,126 +1,126 @@
 {
   "orgId": 1,
-  "name": "PETeam",
-  "folder": "Platform Engineering",
-  "interval": "1m",
-  "rules": [
+  "title": "Istiod Availability SLO",
+  "condition": "C",
+  "data": [
     {
-      "uid": "d7c70661-ea77-4747-b539-96004365bb6d",
-      "title": "istiod-availability-slo-alert",
-      "condition": "C",
-      "data": [
-        {
-          "refId": "A",
-          "relativeTimeRange": {
-            "from": 600,
-            "to": 0
-          },
-          "datasourceUid": "pe-prometheus-datasource",
-          "model": {
-            "editorMode": "code",
-            "expr": "slo:period_error_budget_remaining:ratio{sloth_id=\"istio-requests-availability\"}",
-            "instant": true,
-            "intervalMs": 1000,
-            "legendFormat": "__auto",
-            "maxDataPoints": 43200,
-            "range": false,
-            "refId": "A"
-          }
-        },
-        {
-          "refId": "B",
-          "relativeTimeRange": {
-            "from": 600,
-            "to": 0
-          },
-          "datasourceUid": "__expr__",
-          "model": {
-            "conditions": [
-              {
-                "evaluator": {
-                  "params": [],
-                  "type": "gt"
-                },
-                "operator": {
-                  "type": "and"
-                },
-                "query": {
-                  "params": [
-                    "B"
-                  ]
-                },
-                "reducer": {
-                  "params": [],
-                  "type": "last"
-                },
-                "type": "query"
-              }
-            ],
-            "datasource": {
-              "type": "__expr__",
-              "uid": "__expr__"
-            },
-            "expression": "A",
-            "intervalMs": 1000,
-            "maxDataPoints": 43200,
-            "reducer": "last",
-            "refId": "B",
-            "type": "reduce"
-          }
-        },
-        {
-          "refId": "C",
-          "relativeTimeRange": {
-            "from": 600,
-            "to": 0
-          },
-          "datasourceUid": "__expr__",
-          "model": {
-            "conditions": [
-              {
-                "evaluator": {
-                  "params": [
-                    0
-                  ],
-                  "type": "lt"
-                },
-                "operator": {
-                  "type": "and"
-                },
-                "query": {
-                  "params": [
-                    "C"
-                  ]
-                },
-                "reducer": {
-                  "params": [],
-                  "type": "last"
-                },
-                "type": "query"
-              }
-            ],
-            "datasource": {
-              "type": "__expr__",
-              "uid": "__expr__"
-            },
-            "expression": "B",
-            "intervalMs": 1000,
-            "maxDataPoints": 43200,
-            "refId": "C",
-            "type": "threshold"
-          }
-        }
-      ],
-      "dashboardUid": "slo-detail",
-      "panelId": 66,
-      "noDataState": "NoData",
-      "execErrState": "Error",
-      "for": "5m",
-      "annotations": {
-        "__dashboardUid__": "slo-detail",
-        "__panelId__": "66"
+      "refId": "A",
+      "queryType": "",
+      "relativeTimeRange": {
+        "from": 600,
+        "to": 0
       },
-      "isPaused": false
+      "datasourceUid": "pe-prometheus-datasource",
+      "model": {
+        "editorMode": "code",
+        "expr": "slo:period_error_budget_remaining:ratio{sloth_id=\"istio-requests-availability\"}",
+        "instant": true,
+        "intervalMs": 1000,
+        "legendFormat": "__auto",
+        "maxDataPoints": 43200,
+        "range": false,
+        "refId": "A"
+      }
+    },
+    {
+      "refId": "B",
+      "queryType": "",
+      "relativeTimeRange": {
+        "from": 600,
+        "to": 0
+      },
+      "datasourceUid": "__expr__",
+      "model": {
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "B"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          }
+        ],
+        "datasource": {
+          "type": "__expr__",
+          "uid": "__expr__"
+        },
+        "expression": "A",
+        "intervalMs": 1000,
+        "maxDataPoints": 43200,
+        "reducer": "last",
+        "refId": "B",
+        "type": "reduce"
+      }
+    },
+    {
+      "refId": "C",
+      "queryType": "",
+      "relativeTimeRange": {
+        "from": 600,
+        "to": 0
+      },
+      "datasourceUid": "__expr__",
+      "model": {
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                0
+              ],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "C"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          }
+        ],
+        "datasource": {
+          "type": "__expr__",
+          "uid": "__expr__"
+        },
+        "expression": "B",
+        "intervalMs": 1000,
+        "maxDataPoints": 43200,
+        "refId": "C",
+        "type": "threshold"
+      }
     }
-  ]
+  ],
+  "intervalSeconds": 60,
+  "version": 1,
+  "uid": "istiod-availability-slo-alert",
+  "namespace_uid": "pe-folder",
+  "namespace_id": 12,
+  "rule_group": "PETeam",
+  "no_data_state": "NoData",
+  "exec_err_state": "Error",
+  "is_paused": false,
+  "dashboardUid": "slo-detail",
+  "panelId": 66,
+  "annotations": {
+    "__dashboardUid__": "slo-detail",
+    "__panelId__": "66"
+  }
 }
