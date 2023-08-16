@@ -21,8 +21,8 @@ spec:
         category: availability
       sli:
         events:
-          errorQuery: (sum_over_time((sum(kube_pod_status_ready{pod=~"istiod-.*", condition="false"}))[{{.window}}:15s]))
-          totalQuery: (sum_over_time((sum(kube_pod_status_ready{pod=~"istiod-.*"}))[{{.window}}:15s]))
+          errorQuery: (sum(kube_deployment_status_replicas_available{deployment="istiod"}) < 1) or vector(1)
+          totalQuery: vector(1)
       alerting:
         name: IstioDaemonAvailabilityAlert
         labels:
